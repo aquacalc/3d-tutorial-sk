@@ -1,9 +1,11 @@
 <script>
-	import '../app.css'
-	import '@fontsource-variable/urbanist'
+	import '../app.css';
+	import '@fontsource-variable/urbanist';
 	import { PrismicPreview } from '@prismicio/svelte/kit';
 	import { page } from '$app/stores';
 	import { repositoryName } from '$lib/prismicio';
+
+	import Footer from '$lib/components/Footer.svelte';
 </script>
 
 <svelte:head>
@@ -20,13 +22,15 @@
 	{/if}
 </svelte:head>
 
-<header class='text-gray-100'>Header</header>
+<header class="text-gray-100">Header</header>
 <main>
 	<slot />
 </main>
 <div class="background-gradient absolute inset-0 -z-50 max-h-screen" />
-<div class="pointer-events-none absolute inset-0 -z-40 h-full bg-[url('noisetexture.jpg')] opacity-10 mix-blend-soft-light" />
+<div
+	class="pointer-events-none absolute inset-0 -z-40 h-full bg-[url('noisetexture.jpg')] opacity-10 mix-blend-soft-light"
+/>
 
-<footer class='text-gray-100'>Footer</footer>
+<Footer />
 
 <PrismicPreview {repositoryName} />
