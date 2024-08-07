@@ -32,6 +32,13 @@
             "label": "Tag Line",
             "placeholder": ""
           }
+        },
+        "tag_line_2": {
+          "type": "Text",
+          "config": {
+            "label": "Tag Line 2",
+            "placeholder": ""
+          }
         }
       },
       "items": {}
