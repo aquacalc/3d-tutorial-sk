@@ -6,6 +6,10 @@
 	import { repositoryName } from '$lib/prismicio';
 
 	import Footer from '$lib/components/Footer.svelte';
+
+	export let data;
+
+	const { settings } = data;
 </script>
 
 <svelte:head>
@@ -31,6 +35,6 @@
 	class="pointer-events-none absolute inset-0 -z-40 h-full bg-[url('noisetexture.jpg')] opacity-10 mix-blend-soft-light"
 />
 
-<Footer />
+<Footer {settings} />
 
 <PrismicPreview {repositoryName} />
