@@ -2,7 +2,7 @@
 	import { T as Threlte } from '@threlte/core';
 	import * as THREE from 'three';
 	import Geometry from './Geometry.svelte';
-	import { ContactShadows, Environment, interactivity, transitions } from '@threlte/extras';
+	import { ContactShadows, Environment, interactivity, Text3DGeometry, transitions } from '@threlte/extras';
 
 	interactivity();
 	transitions();
@@ -44,3 +44,5 @@
 
 <!-- Diamond -->
 <Geometry position={[1.6, 1.6, -4]} rate={0.7} geometry={new THREE.OctahedronGeometry(1.5)} />
+
+<!-- <Text3DGeometry text={'Hello World'}  /> -->
