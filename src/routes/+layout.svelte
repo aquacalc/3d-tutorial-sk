@@ -6,6 +6,7 @@
 	import { repositoryName } from '$lib/prismicio';
 
 	import Footer from '$lib/components/Footer.svelte';
+	import Header from '$lib/components/Header.svelte';
 
 	export let data;
 
@@ -26,7 +27,8 @@
 	{/if}
 </svelte:head>
 
-<header class="text-gray-100">Header</header>
+<Header {settings} />
+
 <main>
 	<slot />
 </main>
