@@ -1,17 +1,80 @@
 <script lang="ts">
-	import { type Content } from "@prismicio/client";
+	import type { Content } from '@prismicio/client';
+	import NavBarLink from './NavBarLink.svelte';
 
 	export let settings: Content.SettingsDocument;
+
+	// console.log(settings)
+
+	let open = false;
+
+	const onLinkClick = () => {
+		open = false;
+	};
 </script>
 
-<header>
+<header class="top-0 z-50 mx-auto max-w-7xl md:sticky md:top-4 relative">
 	<nav>
-		<div class="">
-			<div class="">
-				<a href="/" class="text-xl font-extrabold trackig-tighter text-slate-900">
+		<div
+			class="flex flex-col justify-between rounded-b-lg bg-slate-50 px-4 py-2 md:m-4 md:flex-row md:items-center md:rounded-xl"
+		>
+			<div class="flex items-center justify-between">
+				<a
+					href="/"
+					class="text-xl font-extrabold trackig-tighter text-slate-900"
+					aria-label="Homepage"
+				>
 					{settings.data.name}
 				</a>
+
+				<!-- Mobile hamburger button -->
+				<button
+					class="text-slate-800 p-2 block text-2xl tracking-tighter font-extrabold md:hidden"
+					aria-expanded={open}
+					aria-label="Open Menu"
+					on:click={() => (open = true)}
+				>
+					Open
+				</button>
 			</div>
+
+			<!-- Mobile Nav -->
+			<ul
+				class={`fixed inset-0 z-50 flex flex-col items-end gap-4 bg-slate-50 pr-4 pt-14 transition-transform duration-300 ease-in-out opacity-95 md:hidden ${open ? 'translate-x-0' : 'translate-x-[100%]'}`}
+			>
+				<li>
+					<button
+						aria-expanded={open}
+						aria-label="Close Menu"
+						class="fixed right-4 top-3 block p-2 text-2xl text-slate-800 md:hidden"
+						on:click={() => (open = false)}
+					>
+						Close
+					</button>
+				</li>
+
+				{#each settings.data.nav_item as { label, link }}
+					<li class="first:mt-8">
+						<NavBarLink type="mobile" {label} field={link} {onLinkClick} />
+					</li>
+				{/each}
+			</ul>
+
+			<!-- <ul class="">
+				{#each settings.data.nav_item as { label, link }}
+					<li>
+						<NavBarLink type="desktop" {label} field={link} {onLinkClick} />
+						
+					</li>
+				{/each}
+			</ul> -->
+			<ul class="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
+				{#each settings.data.nav_item as { label, link }}
+					<li>
+						<NavBarLink field={link} {label} {onLinkClick} type="desktop" />
+					</li>
+				{/each}
+			</ul>
 		</div>
 	</nav>
 </header>
