@@ -2,7 +2,7 @@
 	import { isFilled, type Content } from '@prismicio/client';
 	import { PrismicLink } from '@prismicio/svelte';
 	import IconGithub from '~icons/fa-brands/github';
-  import IconChimp from '~icons/fa-brands/mailchimp'
+	import IconChimp from '~icons/fa-brands/mailchimp';
 	import Bounded from './Bounded.svelte';
 
 	export let settings: Content.SettingsDocument;
@@ -10,7 +10,7 @@
 	// console.log('settings: ', settings, settings.data.social_link_1.url);
 </script>
 
-<Bounded as='footer' class="text-slate-600">
+<Bounded as="footer" class="text-slate-600">
 	<div
 		class="container mx-auto mt-20 flex flex-col items-center justify-between gap-6 py-8 sm:flex-row"
 	>
@@ -53,24 +53,33 @@
 		<!-- <div class="socials text-slate-100 flex"> -->
 		<div class="socials flex justify-center sm:justify-end text-slate-100 flex">
 			{#if isFilled.link(settings.data.social_link_1)}
-				<PrismicLink field={settings.data.social_link_1} class='p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400' 
-        aria-label={settings.data.name + ' on yadda yadda...'}>
+				<PrismicLink
+					field={settings.data.social_link_1}
+					class="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400"
+					aria-label={settings.data.name + ' on yadda yadda...'}
+				>
 					<IconGithub />
 				</PrismicLink>
 			{/if}
 
 			{#if isFilled.link(settings.data.social_link_2)}
-      <PrismicLink field={settings.data.social_link_2} class='p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400' 
-      aria-label={settings.data.name + ' on yadda yadda...'}>
-        <IconGithub />
-      </PrismicLink>
+				<PrismicLink
+					field={settings.data.social_link_2}
+					class="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400"
+					aria-label={settings.data.name + ' on yadda yadda...'}
+				>
+					<IconGithub />
+				</PrismicLink>
 			{/if}
 
 			{#if isFilled.link(settings.data.social_link_3)}
-      <PrismicLink field={settings.data.social_link_3} class='p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400' 
-      aria-label={settings.data.name + ' on yadda yadda...'}>
-        <IconChimp />
-      </PrismicLink>
+				<PrismicLink
+					field={settings.data.social_link_3}
+					class="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400"
+					aria-label={settings.data.name + ' on yadda yadda...'}
+				>
+					<IconChimp />
+				</PrismicLink>
 			{/if}
 		</div>
 	</div>
