@@ -24,11 +24,6 @@
 
 		<Button field={slice.primary.button_link} label={slice.primary.button_label} />
 
-		<!-- <PrismicImage
-			field={slice.primary.avatar}
-			class="avatar-image h-full w-full object-fill"
-			imgixParams={{ q: 90 }}
-		/> -->
 		<Avatar image={slice.primary.avatar} class="row-start-1 max-w-sm md:col-start-2 md:row-end-3" />
 	</div>
 </Bounded>
