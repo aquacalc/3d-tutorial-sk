@@ -1,6 +1,10 @@
 <script lang="ts">
-	import type { Content } from '@prismicio/client';
+	import  { type Content, isFilled } from '@prismicio/client';
 	import NavBarLink from './NavBarLink.svelte';
+	import Button from './Button.svelte';
+
+	import IconMenu from '~icons/ic/baseline-menu';
+	import IconClose from '~icons/ic/baseline-close';
 
 	export let settings: Content.SettingsDocument;
 
@@ -34,7 +38,7 @@
 					aria-label="Open Menu"
 					on:click={() => (open = true)}
 				>
-					Open
+					<IconMenu />
 				</button>
 			</div>
 
@@ -49,7 +53,7 @@
 						class="fixed right-4 top-3 block p-2 text-2xl text-slate-800 md:hidden"
 						on:click={() => (open = false)}
 					>
-						Close
+						<IconClose />
 					</button>
 				</li>
 
@@ -58,22 +62,20 @@
 						<NavBarLink type="mobile" {label} field={link} {onLinkClick} />
 					</li>
 				{/each}
+				{#if isFilled.link(settings.data.cta_link)}
+					<Button field={settings.data.cta_link} label={settings.data.cta_label} />
+				{/if}
 			</ul>
 
-			<!-- <ul class="">
-				{#each settings.data.nav_item as { label, link }}
-					<li>
-						<NavBarLink type="desktop" {label} field={link} {onLinkClick} />
-						
-					</li>
-				{/each}
-			</ul> -->
 			<ul class="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
 				{#each settings.data.nav_item as { label, link }}
 					<li>
 						<NavBarLink field={link} {label} {onLinkClick} type="desktop" />
 					</li>
 				{/each}
+				{#if isFilled.link(settings.data.cta_link)}
+					<Button field={settings.data.cta_link} label={settings.data.cta_label} class="ml-3" />
+				{/if}
 			</ul>
 		</div>
 	</nav>
