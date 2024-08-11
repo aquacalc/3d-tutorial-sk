@@ -76,7 +76,3 @@
 	{/each}
 </section>
 
-<style>
-	.tech-row {
-	}
-</style>
